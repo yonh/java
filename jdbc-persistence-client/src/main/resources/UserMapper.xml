@@ -1,0 +1,15 @@
+<mapper namespace="user">
+    <select id="selectList" resultType="com.yonh.pojo.User">
+        select * from user
+    </select>
+
+    <!--
+    resultType: 返回值类型
+    parameterType: 参数类型
+    自定义替换参数：#{XXX}
+     -->
+    <select id="selectOne" resultType="com.yonh.pojo.User" parameterType="com.yonh.pojo.User">
+        select * from user where id = #{id} and username = #{username}
+    </select>
+
+</mapper>
