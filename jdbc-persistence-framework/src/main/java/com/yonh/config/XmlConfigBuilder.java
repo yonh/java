@@ -24,9 +24,8 @@ public class XmlConfigBuilder {
     public Configuration parseConfig(InputStream in) throws DocumentException, PropertyVetoException {
         // 解析xml获取数据源配置
         Document doc = new SAXReader().read(in);
-        Element root =doc.getRootElement();
+        Element root = doc.getRootElement();
         List<Element> list = root.selectNodes("//property");
-
         Properties properties = new Properties();
 
         for (Element element : list) {
