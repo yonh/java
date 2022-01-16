@@ -8,3 +8,4 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
 
 insert into user values(1,'admin');
+insert into user values(2,'user');

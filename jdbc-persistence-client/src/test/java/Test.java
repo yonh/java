@@ -1,3 +1,5 @@
+import com.yonh.dao.IUserDao;
+import com.yonh.dao.UserDaoImpl;
 import com.yonh.io.Resources;
 import com.yonh.pojo.User;
 import com.yonh.sqlSession.SqlSession;
@@ -14,16 +16,15 @@ import java.util.List;
 
 public class Test {
     public static void main(String[] args) throws PropertyVetoException, DocumentException, SQLException, IntrospectionException, NoSuchFieldException, ClassNotFoundException, InvocationTargetException, IllegalAccessException, InstantiationException {
-        InputStream resourceAsStream = Resources.getResourceAsStream("sqlMapConfig.xml");
-        SqlSessionFactory sessionFactory = new SqlSessionFactoryBuilder().build(resourceAsStream);
-        SqlSession sqlSession = sessionFactory.openSession();
+        IUserDao userDao = new UserDaoImpl();
+
         User user = new User();
         user.setId(1);
         user.setUsername("admin");
-        User u = sqlSession.selectOne("user.selectOne", user);
-        System.out.printf("select one: %s\n", u);
+        User u = userDao.findByCondition(user);
+        System.out.printf("userDao.findByCondition: %s\n", u);
 
-        List<Object> list = sqlSession.selectList("user.selectList", user);
-        System.out.printf("select list: %s\n", list);
+        List<User> list = userDao.findAll();
+        System.out.printf("userDao.findAll: %s\n", list);
     }
 }
