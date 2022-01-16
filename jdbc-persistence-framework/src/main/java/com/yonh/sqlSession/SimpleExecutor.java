@@ -23,7 +23,6 @@ public class SimpleExecutor implements Executor {
         String sql = mappedStatement.getSql();
         BoundSql boundSql = getBoundSql(sql);
 
-
         // 获取参数class对象
         String paramType = mappedStatement.getParameterType();
         Class<?> paramTypeClass = getClassType(paramType);
@@ -73,6 +72,37 @@ public class SimpleExecutor implements Executor {
         }
 
         return list;
+    }
+
+    public boolean execute(Configuration configuration, MappedStatement mappedStatement, Object[] params) throws SQLException, ClassNotFoundException, NoSuchFieldException, IllegalAccessException {
+        Connection conn = configuration.getDataSource().getConnection();
+        String sql = mappedStatement.getSql();
+        BoundSql boundSql = getBoundSql(sql);
+
+        // 获取参数class对象
+        String paramType = mappedStatement.getParameterType();
+        Class<?> paramTypeClass = getClassType(paramType);
+
+        PreparedStatement preparedStatement = conn.prepareStatement(boundSql.getSql());
+        // 参数列表
+        List<ParameterMapping> parameterMappingList = boundSql.getParams();
+
+        for (int i=0; i<parameterMappingList.size(); i++) {
+            ParameterMapping parameterMapping = parameterMappingList.get(i);
+            String fieldName = parameterMapping.getContent();
+            // 通过反射获取属性值
+            Field declaredField = paramTypeClass.getDeclaredField(fieldName);
+            // 防止属性私有不可访问，设置可访问
+            declaredField.setAccessible(true);
+            Object o = declaredField.get(params[0]); // 获取参数对象对应的属性值
+
+            // 设置参数
+            preparedStatement.setObject(i+1, o);
+        }
+
+        boolean flag = preparedStatement.execute();
+
+        return flag;
     }
 
     private Class<?> getClassType(String paramType) throws ClassNotFoundException {

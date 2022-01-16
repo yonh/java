@@ -12,4 +12,12 @@
         select * from user where id = #{id} and username = #{username}
     </select>
 
+    <select id="insert" resultType="Boolean" parameterType="com.yonh.pojo.User">
+        insert into user values(null, #{username}, #{password});
+    </select>
+
+    <select id="update" resultType="Boolean" parameterType="com.yonh.pojo.User">
+        update user set username = #{username}, password = #{password} where id = #{id};
+    </select>
+
 </mapper>

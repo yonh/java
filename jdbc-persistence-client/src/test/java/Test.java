@@ -29,5 +29,16 @@ public class Test {
 
         List<User> list = userDao.findAll();
         System.out.printf("userDao.findAll: %s\n", list);
+
+        User newUser = new User();
+        newUser.setUsername("new_user");
+        newUser.setPassword("new_user");
+        userDao.insert(newUser);
+
+        User updateUser = new User();
+        updateUser.setId(1);
+        updateUser.setUsername("admin");
+        updateUser.setPassword("password");
+        userDao.update(updateUser);
     }
 }

@@ -31,6 +31,18 @@ public class DefaultSqlSession implements SqlSession {
         throw new RuntimeException("返回结果为空或记录超过一条");
     }
 
+    public boolean insert(String statementId, Object... params) throws SQLException, NoSuchFieldException, ClassNotFoundException, IllegalAccessException {
+        Executor executor = new SimpleExecutor();
+        MappedStatement mappedStatement = this.configuration.getMappedStatementMap().get(statementId);
+        return executor.execute(this.configuration, mappedStatement, params);
+    }
+
+    public boolean update(String statementId, Object... params) throws SQLException, NoSuchFieldException, ClassNotFoundException, IllegalAccessException {
+        Executor executor = new SimpleExecutor();
+        MappedStatement mappedStatement = this.configuration.getMappedStatementMap().get(statementId);
+        return executor.execute(this.configuration, mappedStatement, params);
+    }
+
     public <T> T getMapper(Class<T> clazz) {
         // 使用jdk动态代理生成dao对象并返回
         Object proxy = Proxy.newProxyInstance(DefaultSqlSession.class.getClassLoader(), new Class[]{clazz}, new InvocationHandler() {
@@ -51,8 +63,15 @@ public class DefaultSqlSession implements SqlSession {
                     List<Object> list = selectList(statementId, args);
                     return list;
                 } else {
-                    Object o = selectOne(statementId, args);
-                    return o;
+                    if (methodName == "insert") {
+                        return insert(statementId, args);
+                    } else if (methodName == "update") {
+                        return update(statementId, args);
+                    } else {
+                        Object o = selectOne(statementId, args);
+                        return o;
+                    }
+
                 }
             }
         });
