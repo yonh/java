@@ -1,4 +1,4 @@
-CREATE DATABASE hello CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+CREATE DATABASE jdbc_persistence CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (

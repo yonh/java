@@ -9,7 +9,6 @@ public class DefaultSqlSessionFactory implements SqlSessionFactory {
     }
 
     public SqlSession openSession() {
-        System.out.println("open session");
-        return new DefaultSqlSession();
+        return new DefaultSqlSession(configuration);
     }
 }
