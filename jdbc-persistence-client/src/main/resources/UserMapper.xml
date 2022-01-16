@@ -1,5 +1,5 @@
-<mapper namespace="user">
-    <select id="selectList" resultType="com.yonh.pojo.User">
+<mapper namespace="com.yonh.dao.IUserDao">
+    <select id="findAll" resultType="com.yonh.pojo.User">
         select * from user
     </select>
 
@@ -8,7 +8,7 @@
     parameterType: 参数类型
     自定义替换参数：#{XXX}
      -->
-    <select id="selectOne" resultType="com.yonh.pojo.User" parameterType="com.yonh.pojo.User">
+    <select id="findByCondition" resultType="com.yonh.pojo.User" parameterType="com.yonh.pojo.User">
         select * from user where id = #{id} and username = #{username}
     </select>
 
