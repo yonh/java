@@ -5,19 +5,19 @@
 <mapper namespace="com.yonh.dao.UserDao">
     <!-- namespace: 命名空间，与id组成sql的唯一标识 -->
     <!-- resultType: 返回值类型-->
-    <select id="findAll" resultType="com.yonh.pojo.User">
+    <select id="findAll" resultType="User">
         select * from user
     </select>
 
-    <insert id="saveUser" parameterType="com.yonh.pojo.User">
+    <insert id="saveUser" parameterType="User">
         insert into user values(#{id}, #{username}, #{password})
     </insert>
 
-    <update id="updateUser" parameterType="com.yonh.pojo.User">
+    <update id="updateUser" parameterType="User">
         update user set username = #{username}, password = #{password} where id = #{id}
     </update>
 
-    <delete id="deleteUser" parameterType="java.lang.Integer">
+    <delete id="deleteUser" parameterType="int">
         delete from user where id = #{id}
     </delete>
 
