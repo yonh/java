@@ -33,7 +33,8 @@
 
     <!-- 引入配置文件 -->
     <mappers>
-        <mapper resource="UserMapper.xml"></mapper>
+<!--        <mapper resource="UserMapper.xml"></mapper>-->
+        <package name="com.yonh.mapper" />
     </mappers>
 
 </configuration>

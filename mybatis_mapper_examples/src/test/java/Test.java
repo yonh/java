@@ -1,4 +1,4 @@
-import com.yonh.dao.UserDao;
+import com.yonh.mapper.UserMapper;
 import com.yonh.pojo.User;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -20,50 +20,50 @@ public class Test {
         findByIds();
     }
 
-    private static UserDao getUserDao() throws IOException {
+    private static UserMapper getUserMapper() throws IOException {
         InputStream resourceAsStream = Resources.getResourceAsStream("SqlMapConfig.xml");
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(resourceAsStream);
         SqlSession sqlSession = sqlSessionFactory.openSession(true);
-        UserDao userDao = sqlSession.getMapper(UserDao.class);
+        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
 
-        return userDao;
+        return userMapper;
     }
 
     private static void saveUser() throws IOException {
-        UserDao userDao = getUserDao();
+        UserMapper userMapper = getUserMapper();
         User user = new User(3, "new_user", "new_user");
-        userDao.saveUser(user);
+        userMapper.saveUser(user);
     }
 
     private static void updateUser() throws IOException {
-        UserDao userDao = getUserDao();
+        UserMapper userMapper = getUserMapper();
         User user = new User(3, "update_user", "update_user");
-        userDao.updateUser(user);
+        userMapper.updateUser(user);
     }
 
     private static void deleteUser() throws IOException {
-        UserDao userDao = getUserDao();
-        userDao.deleteUser(3);
+        UserMapper userMapper = getUserMapper();
+        userMapper.deleteUser(3);
     }
 
     private static void findAll() throws IOException {
-        UserDao userDao = getUserDao();
-        List<User> users = userDao.findAll();
+        UserMapper userMapper = getUserMapper();
+        List<User> users = userMapper.findAll();
         System.out.println(users);
     }
 
     private static void findByIds() throws IOException {
-        UserDao userDao = getUserDao();
+        UserMapper userMapper = getUserMapper();
         int[] ids = {1,2};
-        List<User> users = userDao.findByIds(ids);
+        List<User> users = userMapper.findByIds(ids);
         System.out.println("findByIds:");
         System.out.println(users);
     }
 
     private static void findByCondition() throws IOException {
-        UserDao userDao = getUserDao();
+        UserMapper userMapper = getUserMapper();
         User user = new User(1,null,null);
-        List<User> users = userDao.findByCondition(user);
+        List<User> users = userMapper.findByCondition(user);
         System.out.println("findByCondition:");
         System.out.println(users);
     }
