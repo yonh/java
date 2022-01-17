@@ -13,15 +13,16 @@ import java.util.List;
 
 public class Test {
     public static void main(String[] args) throws IOException {
-        findAll();
-        saveUser();
-        updateUser();
-        deleteUser();
-
-        findByCondition();
-        findByIds();
-
-        findOrders();
+//        findAll();
+//        saveUser();
+//        updateUser();
+//        deleteUser();
+//
+//        findByCondition();
+//        findByIds();
+//
+//        findOrders();
+        findUsersAndOrder();
     }
 
     private static UserMapper getUserMapper() throws IOException {
@@ -88,7 +89,15 @@ public class Test {
         for (Order order : orders) {
             System.out.println(order);
         }
-
-
     }
+
+    private static void findUsersAndOrder() throws IOException {
+        UserMapper userMapper = getUserMapper();
+        List<User> users = userMapper.findAllAndOrders();
+        System.out.println("findAllAndOrders:");
+        for (User user : users) {
+            System.out.println(user);
+        }
+    }
+
 }

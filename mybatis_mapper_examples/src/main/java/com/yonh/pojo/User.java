@@ -1,9 +1,13 @@
 package com.yonh.pojo;
 
+import java.util.List;
+
 public class User {
     private int id;
     private String username;
     private String password;
+
+    private List<Order> orders;
 
     public User() { }
     public User(int id, String username, String password) {
@@ -17,6 +21,7 @@ public class User {
         return "User{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
+                ", orders=" + orders +
                 '}';
     }
 
@@ -42,5 +47,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
     }
 }

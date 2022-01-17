@@ -16,6 +16,22 @@
         <include refid="select_user"></include>
     </select>
 
+    <select id="findAllAndOrders" resultMap="userMap">
+        select u.*,o.id oid,o.orderTime,o.total,o.uid from user u left join orders o on o.uid = u.id
+    </select>
+    
+    <resultMap id="userMap" type="com.yonh.pojo.User">
+        <id property="id" column="id"></id>
+        <result property="username" column="username"></result>
+        <result property="password" column="password"></result>
+
+        <collection property="orders" ofType="com.yonh.pojo.Order">
+            <id property="id" column="oid"></id>
+            <result property="orderTime" column="orderTime"></result>
+            <result property="total" column="total"></result>
+        </collection>
+    </resultMap>
+
     <select id="findByCondition" parameterType="User" resultType="User">
         <include refid="select_user"></include>
         <!-- where标签会帮我们自动处理where语句 -->
