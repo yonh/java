@@ -17,6 +17,7 @@ public class Test {
         deleteUser();
 
         findByCondition();
+        findByIds();
     }
 
     private static UserDao getUserDao() throws IOException {
@@ -48,6 +49,14 @@ public class Test {
     private static void findAll() throws IOException {
         UserDao userDao = getUserDao();
         List<User> users = userDao.findAll();
+        System.out.println(users);
+    }
+
+    private static void findByIds() throws IOException {
+        UserDao userDao = getUserDao();
+        int[] ids = {1,2};
+        List<User> users = userDao.findByIds(ids);
+        System.out.println("findByIds:");
         System.out.println(users);
     }
 

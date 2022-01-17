@@ -17,8 +17,16 @@
             <if test="username != null"> and username = #{username}</if>
             <if test="password != null"> and password = #{password}</if>
         </where>
-
     </select>
+
+    <select id="findByIds" parameterType="list" resultType="User">
+        select * from user
+        <where>
+            <!-- 拼接 id in (x,x,x) -->
+            <foreach collection="array" open="id in(" close=")" item="id" separator="," >#{id}</foreach>
+        </where>
+    </select>
+
 
     <insert id="saveUser" parameterType="User">
         insert into user values(#{id}, #{username}, #{password})
