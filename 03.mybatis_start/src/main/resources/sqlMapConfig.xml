@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <environments default="development">
+        <environment id="development">
+            <!-- JDBC: 当前事务有JDBC控制-->
+            <!-- MANAGED: 此配置几乎不执行任何操作。它从不提交或回滚连接。相反，它允许容器管理事务的整个生命周期（例如JEE应用程序服务器上下文）。默认情况下，它会关闭连接。但是，某些容器不希望出现这种情况，因此，如果需要阻止它关闭连接，请将"closeConnection"属性设置为 false -->
+            <transactionManager type="JDBC"></transactionManager>
+            <!-- UNPOOLED: 数据源的此实现只是在每次请求连接时打开和关闭连接。虽然它有点慢，但对于不需要立即可用的连接性能的简单应用程序来说，这是一个不错的选择。不同的数据库在此性能区域中也不同，因此对于某些数据库而言，池可能不太重要，此配置将是理想的。未合并的数据源具有以下要配置的属性 -->
+            <!-- POOLED: 此数据源实现将 JDBC 连接对象汇集在一起，以避免创建新的连接实例所需的初始连接和身份验证时间。这是并发 Web 应用程序实现最快响应的常用方法 -->
+            <!-- JNDI: 此数据源实现旨在与容器（如 EJB 或应用程序服务器）一起使用，这些容器可以集中或外部配置数据源，并在 JNDI 上下文中放置对它的引用 -->
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost/mybatis_start"/>
+                <property name="username" value="root"/>
+                <property name="password" value="root"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!-- 引入配置文件 -->
+    <mappers>
+        <mapper resource="UserMapper.xml"></mapper>
+    </mappers>
+</configuration>
