@@ -3,6 +3,8 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+    <!-- 文档：https://mybatis.org/mybatis-3/configuration.html -->
+
     <environments default="development">
         <environment id="development">
             <!-- JDBC: 当前事务有JDBC控制-->
