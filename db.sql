@@ -1,5 +1,5 @@
-CREATE DATABASE mybatis_start CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-use mybatis_start;
+CREATE DATABASE IF NOT EXISTS mybatis_dao_dynamic_proxy CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+use mybatis_dao_dynamic_proxy;
 
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (

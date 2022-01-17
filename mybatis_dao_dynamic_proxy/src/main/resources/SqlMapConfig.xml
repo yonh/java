@@ -15,7 +15,7 @@
             <!-- JNDI: 此数据源实现旨在与容器（如 EJB 或应用程序服务器）一起使用，这些容器可以集中或外部配置数据源，并在 JNDI 上下文中放置对它的引用 -->
             <dataSource type="POOLED">
                 <property name="driver" value="com.mysql.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://localhost/mybatis_start"/>
+                <property name="url" value="jdbc:mysql://localhost/mybatis_dao_dynamic_proxy"/>
                 <property name="username" value="root"/>
                 <property name="password" value="root"/>
             </dataSource>
