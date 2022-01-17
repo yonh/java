@@ -4,6 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <!-- 文档：https://mybatis.org/mybatis-3/configuration.html -->
+    <properties resource="jdbc.properties"></properties>
 
     <environments default="development">
         <environment id="development">
@@ -14,10 +15,10 @@
             <!-- POOLED: 此数据源实现将 JDBC 连接对象汇集在一起，以避免创建新的连接实例所需的初始连接和身份验证时间。这是并发 Web 应用程序实现最快响应的常用方法 -->
             <!-- JNDI: 此数据源实现旨在与容器（如 EJB 或应用程序服务器）一起使用，这些容器可以集中或外部配置数据源，并在 JNDI 上下文中放置对它的引用 -->
             <dataSource type="POOLED">
-                <property name="driver" value="com.mysql.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://localhost/mybatis_dao_dynamic_proxy"/>
-                <property name="username" value="root"/>
-                <property name="password" value="root"/>
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
             </dataSource>
         </environment>
     </environments>
@@ -26,4 +27,5 @@
     <mappers>
         <mapper resource="UserMapper.xml"></mapper>
     </mappers>
+
 </configuration>
