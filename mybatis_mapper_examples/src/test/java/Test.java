@@ -1,4 +1,6 @@
+import com.yonh.mapper.OrderMapper;
 import com.yonh.mapper.UserMapper;
+import com.yonh.pojo.Order;
 import com.yonh.pojo.User;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -18,6 +20,8 @@ public class Test {
 
         findByCondition();
         findByIds();
+
+        findOrders();
     }
 
     private static UserMapper getUserMapper() throws IOException {
@@ -27,6 +31,15 @@ public class Test {
         UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
 
         return userMapper;
+    }
+
+    private static OrderMapper getOrderMapperg() throws IOException {
+        InputStream resourceAsStream = Resources.getResourceAsStream("SqlMapConfig.xml");
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(resourceAsStream);
+        SqlSession sqlSession = sqlSessionFactory.openSession(true);
+        OrderMapper orderMapper = sqlSession.getMapper(OrderMapper.class);
+
+        return orderMapper;
     }
 
     private static void saveUser() throws IOException {
@@ -66,5 +79,16 @@ public class Test {
         List<User> users = userMapper.findByCondition(user);
         System.out.println("findByCondition:");
         System.out.println(users);
+    }
+
+    private static void findOrders() throws IOException {
+        OrderMapper orderMapper = getOrderMapperg();
+        List<Order> orders = orderMapper.findAll();
+        System.out.println("findOrders:");
+        for (Order order : orders) {
+            System.out.println(order);
+        }
+
+
     }
 }
