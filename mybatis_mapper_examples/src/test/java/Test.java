@@ -15,6 +15,8 @@ public class Test {
         saveUser();
         updateUser();
         deleteUser();
+
+        findByCondition();
     }
 
     private static UserDao getUserDao() throws IOException {
@@ -46,6 +48,14 @@ public class Test {
     private static void findAll() throws IOException {
         UserDao userDao = getUserDao();
         List<User> users = userDao.findAll();
+        System.out.println(users);
+    }
+
+    private static void findByCondition() throws IOException {
+        UserDao userDao = getUserDao();
+        User user = new User(1,null,null);
+        List<User> users = userDao.findByCondition(user);
+        System.out.println("findByCondition:");
         System.out.println(users);
     }
 }

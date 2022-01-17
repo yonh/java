@@ -9,6 +9,17 @@
         select * from user
     </select>
 
+    <select id="findByCondition" parameterType="User" resultType="User">
+        select * from user
+        <!-- where标签会帮我们自动处理where语句 -->
+        <where>
+            <if test="id != null"> and id = #{id}</if>
+            <if test="username != null"> and username = #{username}</if>
+            <if test="password != null"> and password = #{password}</if>
+        </where>
+
+    </select>
+
     <insert id="saveUser" parameterType="User">
         insert into user values(#{id}, #{username}, #{password})
     </insert>
