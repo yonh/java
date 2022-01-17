@@ -5,12 +5,19 @@
 <mapper namespace="com.yonh.dao.UserDao">
     <!-- namespace: 命名空间，与id组成sql的唯一标识 -->
     <!-- resultType: 返回值类型-->
-    <select id="findAll" resultType="User">
+
+
+    <!--抽取SQL片段-->
+    <sql id="select_user">
         select * from user
+    </sql>
+
+    <select id="findAll" resultType="User">
+        <include refid="select_user"></include>
     </select>
 
     <select id="findByCondition" parameterType="User" resultType="User">
-        select * from user
+        <include refid="select_user"></include>
         <!-- where标签会帮我们自动处理where语句 -->
         <where>
             <if test="id != null"> and id = #{id}</if>
@@ -20,7 +27,7 @@
     </select>
 
     <select id="findByIds" parameterType="list" resultType="User">
-        select * from user
+        <include refid="select_user"></include>
         <where>
             <!-- 拼接 id in (x,x,x) -->
             <foreach collection="array" open="id in(" close=")" item="id" separator="," >#{id}</foreach>
