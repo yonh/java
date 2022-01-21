@@ -19,4 +19,6 @@ public interface OrderMapper {
             @Result(property = "user", column = "uid", javaType = User.class, one = @One(select = "com.yonh.mapper.UserMapper.findById"))
     })
     List<Order> findAll() throws IOException;
+    @Select("select * from orders where uid = #{uid}")
+    public List<Order> findByUid(int uid);
 }

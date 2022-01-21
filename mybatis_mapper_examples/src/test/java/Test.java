@@ -22,8 +22,8 @@ public class Test {
 //        findByCondition();
 //        findByIds();
 //
-        findOrders();
-//        findUsersAndOrder();
+//        findOrders();
+        findUsersAndOrder();
 //        findUsersAndRole();
     }
 
@@ -95,7 +95,7 @@ public class Test {
 
     private static void findUsersAndOrder() throws IOException {
         UserMapper userMapper = getUserMapper();
-        List<User> users = userMapper.findAllAndOrders();
+        List<User> users = userMapper.findAll();
         System.out.println("findAllAndOrders:");
         for (User user : users) {
             System.out.println(user);

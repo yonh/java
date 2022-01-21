@@ -1,16 +1,19 @@
 package com.yonh.mapper;
 
 import com.yonh.pojo.User;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 
 import java.io.IOException;
 import java.util.List;
 
 public interface UserMapper {
     @Select("select * from user")
+    @Results({
+            @Result(property = "id", column = "id"),
+            @Result(property = "username", column = "username"),
+            @Result(property = "password", column = "password"),
+            @Result(property = "orders", column = "id", javaType = List.class, many = @Many(select = "com.yonh.mapper.OrderMapper.findByUid"))
+    })
     List<User> findAll() throws IOException;
     // 多条件组合查询示例，if
     List<User> findByCondition(User user);
