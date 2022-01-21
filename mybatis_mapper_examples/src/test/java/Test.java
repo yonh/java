@@ -13,17 +13,18 @@ import java.util.List;
 
 public class Test {
     public static void main(String[] args) throws IOException {
-//        findAll();
-//        saveUser();
-//        updateUser();
-//        deleteUser();
-//
+
+        saveUser();
+        updateUser();
+        findAll();
+        deleteUser();
+
 //        findByCondition();
 //        findByIds();
 //
 //        findOrders();
 //        findUsersAndOrder();
-        findUsersAndRole();
+//        findUsersAndRole();
     }
 
     private static UserMapper getUserMapper() throws IOException {
