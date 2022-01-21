@@ -22,6 +22,13 @@ public interface UserMapper {
     // 一对多映射示例
     List<User> findAllAndOrders();
     // 多对多映射示例
+    @Select("select * from user")
+    @Results({
+            @Result(property = "id", column = "id"),
+            @Result(property = "username", column = "username"),
+            @Result(property = "password", column = "password"),
+            @Result(property = "roles", column = "id", javaType = List.class, many = @Many(select = "com.yonh.mapper.RoleMapper.findByUid"))
+    })
     List<User> findAllAndRoles();
 
     @Select("select * from user where id=#{id}")

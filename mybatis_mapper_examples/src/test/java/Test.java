@@ -23,8 +23,8 @@ public class Test {
 //        findByIds();
 //
 //        findOrders();
-        findUsersAndOrder();
-//        findUsersAndRole();
+//        findUsersAndOrder();
+        findUsersAndRole();
     }
 
     private static UserMapper getUserMapper() throws IOException {

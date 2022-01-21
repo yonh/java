@@ -31,23 +31,23 @@
         </collection>
     </resultMap>
     
-    <select id="findAllAndRoles" resultMap="userRoleMap">
-        select * from user u
-            left join sys_user_role ur on u.id = ur.userid
-            left join sys_role r on r.id = ur.roleid
-    </select>
+<!--    <select id="findAllAndRoles" resultMap="userRoleMap">-->
+<!--        select * from user u-->
+<!--            left join sys_user_role ur on u.id = ur.userid-->
+<!--            left join sys_role r on r.id = ur.roleid-->
+<!--    </select>-->
 
-    <resultMap id="userRoleMap" type="com.yonh.pojo.User">
-        <id property="id" column="userid"></id>
-        <result property="username" column="username"></result>
-        <result property="password" column="password"></result>
+<!--    <resultMap id="userRoleMap" type="com.yonh.pojo.User">-->
+<!--        <id property="id" column="userid"></id>-->
+<!--        <result property="username" column="username"></result>-->
+<!--        <result property="password" column="password"></result>-->
 
-        <collection property="roles" ofType="com.yonh.pojo.Role">
-            <id property="id" column="roleid"></id>
-            <result property="roleName" column="rolename"></result>
-            <result property="roleDesc" column="roledesc"></result>
-        </collection>
-    </resultMap>
+<!--        <collection property="roles" ofType="com.yonh.pojo.Role">-->
+<!--            <id property="id" column="roleid"></id>-->
+<!--            <result property="roleName" column="rolename"></result>-->
+<!--            <result property="roleDesc" column="roledesc"></result>-->
+<!--        </collection>-->
+<!--    </resultMap>-->
 
     <select id="findByCondition" parameterType="User" resultType="User">
         <include refid="select_user"></include>
