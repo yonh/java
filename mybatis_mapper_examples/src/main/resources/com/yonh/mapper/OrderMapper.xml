@@ -6,20 +6,20 @@
     <!-- namespace: 命名空间，与id组成sql的唯一标识 -->
     <!-- resultType: 返回值类型-->
 
-    <resultMap id="orderMap" type="com.yonh.pojo.Order">
-        <result property="id" column="id"></result>
-        <result property="orderTime" column="orderTime"></result>
-        <result property="total" column="total"></result>
+<!--    <resultMap id="orderMap" type="com.yonh.pojo.Order">-->
+<!--        <result property="id" column="id"></result>-->
+<!--        <result property="orderTime" column="orderTime"></result>-->
+<!--        <result property="total" column="total"></result>-->
 
-        <association property="user" javaType="com.yonh.pojo.User">
-            <result property="id" column="uid"></result>
-            <result property="username" column="username"></result>
-        </association>
-    </resultMap>
-    
-    <select id="findAll" resultMap="orderMap">
-<!--        select orders.*,user.id,user.username from orders left join user on user.id = orders.uid-->
-        select * from orders o,user u where o.uid = u.id
-    </select>
+<!--        <association property="user" javaType="com.yonh.pojo.User">-->
+<!--            <result property="id" column="uid"></result>-->
+<!--            <result property="username" column="username"></result>-->
+<!--        </association>-->
+<!--    </resultMap>-->
+<!--    -->
+<!--    <select id="findAll" resultMap="orderMap">-->
+<!--&lt;!&ndash;        select orders.*,user.id,user.username from orders left join user on user.id = orders.uid&ndash;&gt;-->
+<!--        select * from orders o,user u where o.uid = u.id-->
+<!--    </select>-->
 
 </mapper>

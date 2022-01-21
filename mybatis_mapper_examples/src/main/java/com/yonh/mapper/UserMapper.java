@@ -21,6 +21,9 @@ public interface UserMapper {
     // 多对多映射示例
     List<User> findAllAndRoles();
 
+    @Select("select * from user where id=#{id}")
+    User findById(int id);
+
     @Insert("insert into user values(#{id}, #{username},#{password})")
     boolean saveUser(User user) throws IOException;
     @Update("update user set username=#{username},password=#{password} where id = #{id}")

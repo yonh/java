@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.yonh</groupId>
-    <artifactId>mybatics_mapper_examples</artifactId>
+    <artifactId>mybatics_mapper_annotations_examples</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>

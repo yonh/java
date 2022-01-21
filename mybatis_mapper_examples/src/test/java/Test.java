@@ -14,15 +14,15 @@ import java.util.List;
 public class Test {
     public static void main(String[] args) throws IOException {
 
-        saveUser();
-        updateUser();
-        findAll();
-        deleteUser();
+//        saveUser();
+//        updateUser();
+//        findAll();
+//        deleteUser();
 
 //        findByCondition();
 //        findByIds();
 //
-//        findOrders();
+        findOrders();
 //        findUsersAndOrder();
 //        findUsersAndRole();
     }
