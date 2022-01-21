@@ -13,6 +13,8 @@ public interface UserMapper {
     List<User> findByIds(int[] ids);
     // 一对多映射示例
     List<User> findAllAndOrders();
+    // 多对多映射示例
+    List<User> findAllAndRoles();
     boolean saveUser(User user) throws IOException;
     boolean updateUser(User user) throws IOException;
     boolean deleteUser(int id) throws IOException;

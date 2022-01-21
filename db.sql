@@ -26,3 +26,27 @@ insert into orders values(1, "2022-01-01", 1, 1);
 insert into orders values(2, "2022-01-02", 1, 1);
 insert into orders values(3, "2022-01-03", 1, 2);
 insert into orders values(4, "2022-01-04", 1, 2);
+
+
+DROP TABLE IF EXISTS `sys_role`;
+CREATE TABLE `sys_role` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `rolename` varchar(255) DEFAULT '' not null,
+  `roleDesc` varchar(255) DEFAULT '' not null,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+INSERT INTO `sys_role` VALUES ('1', 'user', 'CTO');
+INSERT INTO `sys_role` VALUES ('2', 'CEO', 'CEO');
+
+DROP TABLE IF EXISTS `sys_user_role`;
+CREATE TABLE `sys_user_role` (
+  `userid` int(11) NOT NULL,
+  `roleid` int(11) NOT NULL,
+  PRIMARY KEY (`userid`,`roleid`),
+  KEY `roleid` (`roleid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO `sys_user_role` VALUES ('1', '1');
+INSERT INTO `sys_user_role` VALUES ('2', '1');
+INSERT INTO `sys_user_role` VALUES ('1', '2');

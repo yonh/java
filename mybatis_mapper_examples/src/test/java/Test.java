@@ -22,7 +22,8 @@ public class Test {
 //        findByIds();
 //
 //        findOrders();
-        findUsersAndOrder();
+//        findUsersAndOrder();
+        findUsersAndRole();
     }
 
     private static UserMapper getUserMapper() throws IOException {
@@ -94,6 +95,15 @@ public class Test {
     private static void findUsersAndOrder() throws IOException {
         UserMapper userMapper = getUserMapper();
         List<User> users = userMapper.findAllAndOrders();
+        System.out.println("findAllAndOrders:");
+        for (User user : users) {
+            System.out.println(user);
+        }
+    }
+
+    private static void findUsersAndRole() throws IOException {
+        UserMapper userMapper = getUserMapper();
+        List<User> users = userMapper.findAllAndRoles();
         System.out.println("findAllAndOrders:");
         for (User user : users) {
             System.out.println(user);
